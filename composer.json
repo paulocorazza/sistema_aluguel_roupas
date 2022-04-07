@@ -1,0 +1,8 @@
+{
+    "name":"scheduler/party_clothes_rent",
+    "autoload":{
+      "psr-4":{
+        "App\\":"app/"
+      }
+    }
+  }
