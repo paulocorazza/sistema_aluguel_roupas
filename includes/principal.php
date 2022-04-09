@@ -14,10 +14,7 @@
           <a class="nav-link" href="/views/usuarios.php">Usuários</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/views/usuarios.php">Usuarios</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/views/usuarios.php">Usuarios</a>
+          <a class="nav-link" href="/views/clientes.php">Clientes</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/views/usuarios.php">Usuarios</a>

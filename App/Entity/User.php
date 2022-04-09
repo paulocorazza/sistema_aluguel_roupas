@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Db\Database;
-use DateTime;
 use PDO;
 
 class User 
@@ -12,7 +11,7 @@ class User
     public $name;//user name
     public $email;//user email
     public $password;//user password
-    public $date;
+    public $date;//createad at
 
 
     public function createUser()//create user
