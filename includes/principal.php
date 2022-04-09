@@ -16,7 +16,7 @@
         <li class="nav-item">
           <a class="nav-link" href="/views/clientes.php">Clientes</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="/views/usuarios.php">Usuarios</a>
         </li>
         <li class="nav-item">
@@ -24,12 +24,21 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/views/usuarios.php">Usuarios</a>
-        </li>
+        </li> -->
       </ul>
     </div>
     <a class="navbar-brand">Bem vindo(a) <?= $_SESSION['user']['email'] ?> </a>
     <a class="navbar-brand" href="/logout.php">Sair</a>
   </div>
 </nav>
-
 <!--Navbar!-->
+
+<!-- <div class="p-5 bg-light">
+    <h1 class="display-3">Aqui pode ser inserido qualquer conteúdo como por exemplo um dashboard</h1>
+    <p class="lead">Jumbo helper text</p>
+    <hr class="my-2">
+    <p>More info</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+    </p>
+</div> -->
