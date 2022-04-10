@@ -10,10 +10,13 @@ Login::requireLogout();
 if(isset($_POST['email'])){
 
     $user = User::getUserByEmail($_POST['email']);
-    if(!$user instanceof User || !password_verify($_POST['password'], $user->password)){
-       echo '<h1>Não confere</h1>';
+    if($user instanceof User || password_verify($_POST['password'], $user->password)){
+        Login::login($user);   
+    } else {
+       header("Location: /views/erro.php");
+       exit;
     }
-    Login::login($user);       
+        
 }
 
 

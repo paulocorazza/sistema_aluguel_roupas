@@ -21,7 +21,7 @@ class Login
         self::init();
         $_SESSION['user'] = [
             'id' => $user->id,
-            'nome'=> $user->nome,
+            'nome'=> $user->name,
             'email' => $user->email
         ];
         header('location: views/main.php');

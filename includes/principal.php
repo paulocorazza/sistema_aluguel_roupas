@@ -16,18 +16,22 @@
         <li class="nav-item">
           <a class="nav-link" href="/views/clientes.php">Clientes</a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="/views/usuarios.php">Usuarios</a>
-        </li>
         <li class="nav-item">
-          <a class="nav-link" href="/views/usuarios.php">Usuarios</a>
+          <a class="nav-link" href="/views/agenda.php">Agenda</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/views/usuarios.php">Usuarios</a>
-        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Peças de Roupa</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/views/vestidos.php">Vestidos</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="#">Separated link</a>
+          </div>
+        </li>
+        
       </ul>
     </div>
-    <a class="navbar-brand">Bem vindo(a) <?= $_SESSION['user']['email'] ?> </a>
+    <a class="navbar-brand">Bem vindo(a) <?= $_SESSION['user']['nome'] ?> </a>
     <a class="navbar-brand" href="/logout.php">Sair</a>
   </div>
 </nav>

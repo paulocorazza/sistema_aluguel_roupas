@@ -8,14 +8,16 @@
                     <form method="POST">
                         <p class="text-center">Entre com seus dados abaixo para logar.</p>
                         <div class="form-floating mb-3">
+                        <i class="fa-solid fa-user fa-2x"></i>
                             <label for="email">Endereço de email:</label>
-                            <input type="email" name="email" class="form-control" placeholder="name@example.com">
+                            <input type="email" name="email" class="form-control" placeholder="name@example.com" required>
 
                         </div>
                         <div class="form-floating mb-3">
+                        <i class="fa-solid fa-key fa-2x"></i>
                             <label for="password">Senha:</label>
                             <input type="password" name="password" class="form-control" id="floatingPassword"
-                                placeholder="Password">
+                                placeholder="Password" required>
 
                         </div>
                         <div class="d-grid">

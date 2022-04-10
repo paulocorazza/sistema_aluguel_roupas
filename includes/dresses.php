@@ -1,18 +1,20 @@
 <?php
 
 $resultados = '';
-  foreach($users as $user){
-  $dateFormatted = date('d/m/Y H:i:s',strtotime('-3 hours',strtotime($user->date)));
+  foreach($dresses as $dress){
   $resultados .= '<tr>
-                      <td>'.$user->id.'</td>
-                      <td>'.$user->name.'</td>
-                      <td>'.$user->email.'</td>
-                      <td>'.$dateFormatted .'</td>
+                      <td>'.$dress->code.'</td>
+                      <td><img src="/App/img/'.$dress->photo.'" class="img-fluid" style="height: 200px; width: 250px;" loading="lazy"></td>
+                      <td>'.$dress->status.'</td>
+                      <td>'.$dress->rentPrice .'</td>
+                      <td>'.$dress->buyPrice .'</td>
+                      <td>'.$dress->salePrice .'</td>
+                      <td>'.$dress->size .'</td>
                       <td>
-                        <a href="/views/userEdit.php?id='.$user->id.'">
+                        <a href="/views/userEdit.php?id='.$dress->id.'">
                           <button type="button" class="btn btn-warning">Editar</button>
                         </a>
-                        <a href="/views/userDelete.php?id='.$user->id.'">
+                        <a href="/views/userDelete.php?id='.$dress->id.'">
                           <button type="button" class="btn btn-danger">Excluir</button>
                         </a>
                       </td>
@@ -22,22 +24,25 @@ $resultados = '';
 ?>
 
 <div class="p-5 bg-light mt-4">
-  <h1 class="text-center">Usuários</h1>
+  <h1 class="text-center">Vestidos</h1>
 </div>
 
 <div class="container">
 <div class="mt-3">
-  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newUser">Novo Usuario</button>
+  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newDress">Novo Vestido</button>
 </div>
 
 <table class="table bg-light mt-4 table-striped">
   <thead class="bg-primary text-light">
     <tr>
-      <th><i class="fa-solid fa-id-card"></i> ID</th>
-      <th><i class="fa-solid fa-file-signature"></i> Nome</th>
-      <th><i class="fa-solid fa-at"></i> Email</th>
-      <th><i class="fa-solid fa-calendar-days"></i> Criado em </th>
-      <th><i class="fa-solid fa-circle-exclamation"></i> Ações</th>
+      <th><i class="fa-solid fa-id-card"></i>Código</th>
+      <th><i class="fa-solid fa-file-signature"></i>Foto</th>
+      <th><i class="fa-solid fa-at"></i>Status</th>
+      <th><i class="fa-solid fa-calendar-days"></i>Preço Aluguel</th>
+      <th><i class="fa-solid fa-circle-exclamation"></i>Preço Compra</th>
+      <th><i class="fa-solid fa-circle-exclamation"></i>Preço Promoção</th>
+      <th><i class="fa-solid fa-circle-exclamation"></i>Tamanho</th>
+      <th><i class="fa-solid fa-circle-exclamation"></i>Ações</th>
     </tr>
   </thead>
   <tbody>
@@ -46,7 +51,7 @@ $resultados = '';
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="newUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="newDress" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary">

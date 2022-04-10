@@ -48,4 +48,33 @@ class Customer
                                       ->fetchAll(PDO::FETCH_CLASS,self::class);
     }
 
+    public function updateCustomer()
+    {
+        return (new Database('customers'))->update('id = '.$this->id,[
+            'name' => $this->name,
+            'surname' => $this->surname,
+            'street' => $this->street,
+            'addressNumber' => $this->addressNumber,
+            'addressComplement' => $this->addressComplement,
+            'state' => $this->state,
+            'city' => $this->city,
+            'phoneNumber' => $this->phoneNumber,
+            'email' => $this->email,
+            'birthday' => $this->birthday,
+        ]);
+    }
+
+    public function deleteCustomer()
+    {
+        return (new Database('customers'))->delete('id ='.$this->id);
+    }
+
+    public static function getCustomer($id)
+    {
+        return (new Database('customers'))->select('id ='. $id)
+                                      ->fetchObject(self::class);
+    }
+
+
+
 }
