@@ -43,6 +43,31 @@ class Clothe
                                       ->fetchAll(PDO::FETCH_CLASS,self::class);
     }
 
+    public static function getDress($id)
+    {
+        return (new Database('clothes'))->select('id ='. $id)
+                                      ->fetchObject(self::class);
+    }
+
+
+    public function updateDress()
+    {
+        return (new Database('clothes'))->update('id = '.$this->id,[
+            'code' => $this->code,
+            'photo' => $this->photo,
+            'buyPrice' => $this->buyPrice,
+            'rentPrice' => $this->rentPrice,
+            'salePrice' => $this->salePrice,
+            'status' => $this->status,
+            'size' => $this->size,
+        ]);
+    }
+
+    public function deleteDress()
+    {
+        return (new Database('clothes'))->delete('id ='.$this->id);
+    }
+
 
 
 }

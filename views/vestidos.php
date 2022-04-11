@@ -22,6 +22,7 @@ if(isset($_POST['code'])){
     $dress->status = $_POST['status'];
     $dress->size = $_POST['size'];
     $dress->type = $_POST['type'];
+    $dress->createClothe();
 
     header('Location: /views/vestidos.php');
     exit;
