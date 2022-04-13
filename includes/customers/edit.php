@@ -10,11 +10,12 @@
                 <button class="btn btn-primary">Voltar</button>
             </a>
             <h1 class="mt-3 text-center"><?=TITLE?></h1>
-            <form method="POST">
+            <form method="POST" id="customer">
                 <div class="form-group">
                     <div class="row">
                         <div class="col">
                             <i class="fa-solid fa-file-signature"></i>
+                            <input type="hidden" id="id" value="<?= $customer->id ?>">
                             <label for="name">Nome:</label>
                             <input type="text" name="name" class="form-control" value="<?= $customer->name ?>" required>
                         </div>
@@ -98,6 +99,8 @@
     </div>
 
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
 <script>
     const selectStates = document.querySelector('#states');
@@ -139,4 +142,39 @@
 
     }
     populateStateSelect();
+
+   let id = document.getElementById("id").value;
+   $(document).ready(function () {
+    $('#customer').on('submit', function (e){
+      $.ajax({
+        url: `/views/customerEdit.php?id=${id}`,
+        data: $(this).serialize(),
+        type: 'POST',
+        success: function(data){
+          Swal.fire({
+            icon: 'success',
+            title: 'Sucessso!',
+            text: 'Cliente alterado com sucesso!',
+            confirmButtonText : 'Voltar'
+          }).then((result) => {
+            if(result.isConfirmed){
+              window.location.href = '/views/clientes.php'
+            }
+          })
+        },
+        error: function (data) {
+          Swal.fire(
+            'Opaa!',
+            'Algo deu errado',
+            'warning'
+          )
+        }
+      });
+      e.preventDefault();
+    });
+  });
+
+
+
+
 </script>

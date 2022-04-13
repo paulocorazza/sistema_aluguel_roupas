@@ -34,8 +34,8 @@ if(isset($_POST['name'],$_POST['surname'])){
     $customer->birthday = $_POST['birthday'];
     $customer->phoneNumber = $_POST['phoneNumber'];
     $customer->updateCustomer();
-    header('location: /views/clientes.php');
-    exit;
+    // header('location: /views/clientes.php');
+    // exit;
 }
 
 include '../includes/header.php';

@@ -26,8 +26,6 @@ if(!$user instanceof User){
 //valida o POST
 if(isset($_POST['delete'])){
     $user->deleteUser();
-    header('location: /views/usuarios.php');
-    exit;
 }
 
 

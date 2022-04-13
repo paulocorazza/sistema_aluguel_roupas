@@ -4,7 +4,8 @@
       <h1 class="text-center">Clientes</h1>
     </div>
     <h2 class="mt-3">Excluir Cliente</h2>
-    <form method="post">
+    <form method="POST" id="customer">
+      <?php if(!$_POST != null) { ?>
       <div class="form-group">
         <h5>Você deseja realmente excluir o Cliente <strong><?=$customer->name ?></strong>?</h5>
       </div>
@@ -14,6 +15,17 @@
         </a>
         <button type="submit" name="delete" class="btn btn-danger">Excluir</button>
       </div>
+      <?php } else { ?>
+      <div class="alert alert-dismissible alert-success">
+        <strong>Feito, Cliente <strong><?= $customer->name ?></strong> excluído com sucesso <a
+            href="/views/clientes.php">Clique aqui para voltar!</a>
+      </div>
+      <?php } ?>
     </form>
   </div>
 </main>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>

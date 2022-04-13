@@ -36,8 +36,6 @@ if(isset($_POST['code'])){
 }
 
 
-
-
 include '../includes/header.php';
 include '../includes/principal.php';
 include '../includes/clothes/dress/edit.php';

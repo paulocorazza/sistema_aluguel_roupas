@@ -7,7 +7,7 @@ select * from users
 insert into users (
 name,email,password)
 values 
-('paulo corazza','corazza.paulovinicius@gmail.com','$2y$10$puzo.OACMoGS1ephOM7k7uYS8TttD2txLKMMIPFoQGbBjuoh5pEly')
+('paulo corazza','corazza.pausdlovinicius@fgmail.com','$2y$10$puzo.OACMoGS1ephOM7k7uYS8TttD2txLKMMIPFoQGbBjuoh5pEly')
 
 alter table users drop column date
 

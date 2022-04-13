@@ -23,8 +23,8 @@
                             <input type="text" name="code" value="<?= $dress->code ?>" class="form-control">
                             <p></p>
                             <i class="fa-solid fa-image"></i>
-                            <label for="foto">Foto:</label>
-                            <input type="file" name="photo" class="form-control" value="<?= $dress->photo ?>">
+                            <label for="foto">Atualizar imagem:</label>
+                            <input type="file" name="photo" class="form-control">
                             <p></p>
                             <div class="row">
                                 <div class="col">

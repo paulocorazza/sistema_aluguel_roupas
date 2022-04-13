@@ -19,8 +19,8 @@ if(isset($_POST['name'],$_POST['email'],$_POST['password'])){
     $user->password = password_hash($_POST['password'],PASSWORD_DEFAULT);
     $user->createUser();
 
-    header('Location: /views/usuarios.php');
-    exit;
+    // header('Location: /views/usuarios.php');
+    // exit;
 
 }
 

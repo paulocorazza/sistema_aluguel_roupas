@@ -67,7 +67,4 @@ class Clothe
     {
         return (new Database('clothes'))->delete('id ='.$this->id);
     }
-
-
-
 }

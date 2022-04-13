@@ -52,28 +52,63 @@ $resultados = '';
       <div class="modal-header bg-primary">
         <h5 class="modal-title text-white">Criar novo usuario</h5>
       </div>
-      <form method="POST">
+      <form method="POST" id="user-form">
         <div class="modal-body">
           <i class="fa-solid fa-file-signature"></i>
           <label for="name">Nome:</label>
-          <input type="text" name="name" class="form-control">
+          <input type="text" name="name" class="form-control" required>
           <i class="fa-solid fa-at"></i>
           <label for="email">email:</label>
-          <input type="text" name="email" class="form-control">
+          <input type="text" name="email" class="form-control" required>
           <i class="fa-solid fa-key"></i>
           <label for="name">Senha:</label>
-          <input type="password" name="password" class="form-control">
+          <input type="password" name="password" class="form-control" required>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancelar</button>
-          <button type="submit" class="btn btn-primary" id="save">Salvar</button>
+          <button type="submit" class="btn btn-success" id="save">Salvar</button>
         </div>
       </form>
     </div>
   </div>
 </div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  $(document).ready(function () {
+    $('#user-form').on('submit', function (e) { //Don't foget to change the id form
+      $.ajax({
+        url: '/views/usuarios.php', //===PHP file name====
+        data: $(this).serialize(),
+        type: 'POST',
+        success: function (data) {
+          console.log(data);
+          //Success Message == 'Title', 'Message body', Last one leave as it is
+          Swal.fire({
+            icon: 'success',
+            title: 'Sucessso!',
+            text: 'Usuário criado com sucesso!',
+            confirmButtonText : 'Voltar'
+          }).then((result) => {
+            if(result.isConfirmed){
+              window.location.href = '/views/usuarios.php'
+            }
+          })
+          
+        },
+        error: function (data) {
+          //Error Message == 'Title', 'Message body', Last one leave as it is
+          Swal.fire(
+            'Opaa!',
+            'Algo deu errado',
+            'danger'
+          )
+        }
+      });
+      e.preventDefault(); //This is to Avoid Page Refresh and Fire the Event "Click"
+    });
+  });
+</script>
 
 
 

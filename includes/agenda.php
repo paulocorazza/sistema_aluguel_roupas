@@ -1,8 +1,9 @@
-<div class="col-md-12">
-    <div id="calendar">
+<div class="row">
+    <div class="col-md-12">
+        <div id="calendar">
+        </div>
     </div>
 </div>
-
 
 <script>
        document.addEventListener('DOMContentLoaded', function () {
@@ -10,7 +11,7 @@
         let calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
             themeSystem: 'bootstrap',
-            locale: 'br',
+            locale: 'pt-br',
             navLinks: true,
             headerToolbar: {
                 left: 'prev,next today',
@@ -20,27 +21,6 @@
             dayMaxEvents: true,
             nowIndicator: true,
             
-            eventClick: function (info) {
-                const pecas = info.event.extendedProps.codigo;
-                const cliente = info.event.title;
-                const horaIni = info.event.start;
-                const horaFim = info.event.end;
-                const date = new Date(horaIni);
-                const today = new Date();
-                const element = document.getElementById('alerta');
-                if (date <= today) {
-                    element.classList.remove("alert-success");
-                    element.classList.add("alert-danger");
-                } else {
-                    element.classList.remove("alert-danger");
-                    element.classList.add("alert-success");
-                }
-                const finalDate = moment(date).format('DD/MM/YYYY hh:mm');
-                $("#nomeCliente").val(cliente);
-                // $("#pecas").val(pecas);
-                document.getElementById('data').innerHTML = finalDate;
-                $('#evento').modal('show');
-            },
             eventSources: [{
                     url: '/evento',
                     method: 'GET',
@@ -85,7 +65,7 @@
                 }
             ],
         });
-        calendar.setOption('locale', 'br');
+        calendar.setOption('locale', 'pt-br');
         calendar.render();
     });
 </script>

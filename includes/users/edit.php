@@ -11,8 +11,9 @@
 
             <h1 class="mt-3 text-center"><?=TITLE?></h1>
 
-            <form method="POST">
+            <form method="POST" id="user-form">
                 <div class="form-group">
+                <input id="id" type="hidden" value="<?= $user->id ?>">
                 <i class="fa-solid fa-file-signature"></i>
                     <label>Nome:</label>
                     <input type="text" class="form-control" name="name" value="<?= $user->name ?>">
@@ -38,4 +39,38 @@
     </div>
 </div>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+   let id = document.getElementById("id").value;
+   $(document).ready(function () {
+    $('#user-form').on('submit', function (e){
+      $.ajax({
+        url: `/views/userEdit.php?id=${id}`,
+        data: $(this).serialize(),
+        type: 'POST',
+        success: function(data){
+          Swal.fire({
+            icon: 'success',
+            title: 'Sucessso!',
+            text: 'Usuário criado com sucesso!',
+            confirmButtonText : 'Voltar'
+          }).then((result) => {
+            if(result.isConfirmed){
+              window.location.href = '/views/usuarios.php'
+            }
+          })
+        },
+        error: function (data) {
+          Swal.fire(
+            'Opaa!',
+            'Algo deu errado',
+            'warning'
+          )
+        }
+      });
+      e.preventDefault();
+    });
+  });
+</script>
+
 

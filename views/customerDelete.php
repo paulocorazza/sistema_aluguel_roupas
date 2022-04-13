@@ -25,9 +25,9 @@ if(!$customer instanceof Customer){
 
 //valida o POST
 if(isset($_POST['delete'])){
-    $customer->deletecustomer();
-    header('location: /views/clientes.php');
-    exit;
+    $customer->deleteCustomer();
+    // header('location: /views/clientes.php');
+    // exit;
 }
 
 
