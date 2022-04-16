@@ -4,7 +4,7 @@ $resultados = '';
   foreach($dresses as $dress){
   $resultados .= '<tr>
                       <td>'.$dress->code.'</td>
-                      <td><img src="/App/img/'.$dress->photo.'" class="img-fluid" style="height: 200px; width: 250px;" loading="lazy"></td>
+                      <td><img src="/assets/img/'.$dress->photo.'" class="img-fluid" style="height: 200px; width: 250px;" loading="lazy"></td>
                       <td>'.$dress->status.'</td>
                       <td>'.'R$ '.$dress->rentPrice .'</td>
                       <td>'.'R$ '.$dress->buyPrice .'</td>
@@ -31,6 +31,8 @@ $resultados = '';
   <div class="mt-3">
     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newDress">Novo Vestido</button>
   </div>
+
+  <p class="statusMsg"></p>
 
   <table class="table bg-light mt-4 table-striped">
     <thead class="bg-primary text-light">
@@ -65,7 +67,6 @@ $resultados = '';
       <?=$resultados?>
     </tbody>
   </table>
-
   <!-- Modal -->
   <div class="modal fade" id="newDress" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -73,7 +74,7 @@ $resultados = '';
         <div class="modal-header bg-primary">
           <h5 class="modal-title text-white">Criar novo vestido</h5>
         </div>
-        <form method="POST">
+        <form id="dress-form" enctype="multipart/form-data">
           <div class="modal-body">
             <i class="fa-solid fa-id-card"></i>
             <label for="name">Código:</label>
@@ -81,18 +82,18 @@ $resultados = '';
             <p></p>
             <i class="fa-solid fa-image"></i>
             <label for="foto">Foto:</label>
-            <input type="file" name="photo" class="form-control">
+            <input type="file" name="photo" id="photo" class="form-control">
             <p></p>
             <div class="row">
               <div class="col">
                 <i class="fa-solid fa-money-bill"></i>
                 <label for="name">Preço Aluguel:</label>
-                <input type="number" name="rentPrice" class="form-control">
+                <input type="number" name="rentPrice"  class="form-control">
               </div>
               <div class="col">
                 <i class="fa-solid fa-money-bill"></i>
                 <label for="name">Preço Compra:</label>
-                <input type="number" name="buyPrice" class="form-control">
+                <input type="number" name="buyPrice"  class="form-control">
               </div>
               <div class="col">
                 <i class="fa-solid fa-money-bill"></i>
@@ -100,21 +101,26 @@ $resultados = '';
                 <input type="number" name="salePrice" class="form-control">
               </div>
             </div>
+            <i class="fa-solid fa-circle-exclamation"></i>
             <label for="status">Status</label>
             <select class="form-control" name="status">
               <option value="disponível">Disponível</option>
               <option value="promoção">Promoção</option>
             </select>
             <p></p>
+            <i class="fa-solid fa-ruler-horizontal"></i>
             <label for="tamanho">Tamanho:</label>
             <input type="number" name="size" class="form-control">
             <input type="hidden" name="type" value="dress">
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancelar</button>
-              <button type="submit" class="btn btn-primary" id="save">Salvar</button>
+              <input type="submit" class="btn btn-primary" name="submit" value="SALVAR">
             </div>
         </form>
       </div>
     </div>
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/assets/js/clothes/dress/dress.js"></script>

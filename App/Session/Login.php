@@ -66,7 +66,7 @@ class Login
     public static function requireLogout( )
     {
         if(self::isLogged()){
-            header('location: index.php');
+            header('location: /views/main.php');
             exit;
         }
     }

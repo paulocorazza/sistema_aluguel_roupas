@@ -24,14 +24,21 @@ if(!$dress instanceof Clothe){
 
 if(isset($_POST['code'])){
     $dress->code = $_POST['code'];
-    $dress->photo = $_POST['photo'];
+    $dress->photo = ($dress->photo) ?: $dress->photo = $_POST['photo'];
     $dress->rentPrice = $_POST['rentPrice'];
     $dress->buyPrice = $_POST['buyPrice'];
     $dress->salePrice = $_POST['salePrice'];
     $dress->status = $_POST['status'];
     $dress->size = $_POST['size'];
     $dress->updateDress();
-    header('location: /views/vestidos.php');
+    header('Location: /views/vestidos.php');
+    exit;
+}
+
+if(isset($_POST['photo'])){
+    $dress->photo = $_POST['photo'];
+    $dress->updateDress();
+    header('Location: /views/dressEdit.php?id=' . $_GET['id']);
     exit;
 }
 

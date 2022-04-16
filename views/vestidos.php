@@ -10,12 +10,11 @@ $dresses = Clothe::getDresses();
 //force user to be logged
 Login::requireLogin();
 
-
 if(isset($_POST['code'])){
 
     $dress = new Clothe();
     $dress->code = $_POST['code'];
-    $dress->photo = $_POST['photo'];
+    $dress->photo = $_FILES['photo']['name'];
     $dress->buyPrice = $_POST['buyPrice'];
     $dress->rentPrice = $_POST['rentPrice'];
     $dress->salePrice = $_POST['salePrice'];
@@ -23,11 +22,10 @@ if(isset($_POST['code'])){
     $dress->size = $_POST['size'];
     $dress->type = $_POST['type'];
     $dress->createClothe();
-
-    header('Location: /views/vestidos.php');
-    exit;
-
 }
+
+
+
 
 include '../includes/header.php';
 include '../includes/principal.php';

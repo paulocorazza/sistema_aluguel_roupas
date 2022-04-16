@@ -63,7 +63,28 @@ create table clothes(
 	type varchar(25)
 )
 
+
+
+
+CREATE TABLE IF NOT EXISTS `form_data` (
+  `id` int(11) NOT NULL auto_increment  primary key ,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+drop table form_data 
+
+SELECT * from form_data 
+
+
+
 select * from clothes 
+
+delete from clothes where type = 'dress'
+
+truncate table clothes 
+
 
 insert into clothes(code,photo,status,buyPrice,rentPrice,salePrice,size,type)
 values 
