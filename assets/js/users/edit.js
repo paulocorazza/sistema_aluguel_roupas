@@ -9,7 +9,7 @@ $(document).ready(function () {
        Swal.fire({
          icon: 'success',
          title: 'Sucessso!',
-         text: 'Usuário criado com sucesso!',
+         text: 'Usuário alterado com sucesso!',
          confirmButtonText : 'Voltar'
        }).then((result) => {
          if(result.isConfirmed){

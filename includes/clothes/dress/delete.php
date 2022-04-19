@@ -1,8 +1,8 @@
 <main class="text-center">
+<div class="p-5 bg-light mt-4">
+    <h1 class="text-center">Vestidos</h1>
+  </div>
   <div class="container">
-    <div class="p-5 bg-light mt-4">
-      <h1 class="text-center">Vestidos</h1>
-    </div>
     <h2 class="mt-3">Excluir Vestido</h2>
     <form method="post">
       <div class="text-center">

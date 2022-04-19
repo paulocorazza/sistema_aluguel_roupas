@@ -1,71 +1,71 @@
-<div class="row">
-    <div class="col-md-12">
-        <div id="calendar">
-        </div>
-    </div>
+<div class="container">
+    <div id='calendar'></div>
 </div>
 
+
 <script>
-       document.addEventListener('DOMContentLoaded', function () {
-        let calendarEl = document.getElementById('calendar');
-        let calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            themeSystem: 'bootstrap',
-            locale: 'pt-br',
-            navLinks: true,
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridDay'
-            },
-            dayMaxEvents: true,
-            nowIndicator: true,
-            
-            eventSources: [{
-                    url: '/evento',
-                    method: 'GET',
-                    color: 'red',
-                    textColor: 'white',
-                    failure: function (e) {
-                        console.log(e);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Não consegui carregar as datas',
-                        })
-                    },
-                },
-                {
-                    url: '/evento/retirada',
-                    method: 'GET',
-                    color: 'yellow',
-                    textColor: 'black',
-                    failure: function (e) {
-                        console.log(e);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Não consegui carregar as datas',
-                        })
-                    },
-                },
-                {
-                    url: '/evento/devolucao',
-                    method: 'GET',
-                    color: 'green',
-                    textColor: 'white',
-                    failure: function (e) {
-                        console.log(e);
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Não consegui carregar as datas',
-                        })
-                    },
-                }
-            ],
-        });
-        calendar.setOption('locale', 'pt-br');
-        calendar.render();
-    });
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    initialDate: '2022-04-07',
+    themeSystem : 'bootstrap5',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    events: [
+      {
+        title: 'All Day Event',
+        start: '2022-04-01'
+      },
+      {
+        title: 'Long Event',
+        start: '2022-04-07',
+        end: '2022-04-10'
+      },
+      {
+        groupId: '999',
+        title: 'Repeating Event',
+        start: '2022-04-09T16:00:00'
+      },
+      {
+        groupId: '999',
+        title: 'Repeating Event',
+        start: '2022-04-16T16:00:00'
+      },
+      {
+        title: 'Conference',
+        start: '2022-04-11',
+        end: '2022-04-13'
+      },
+      {
+        title: 'Meeting',
+        start: '2022-04-12T10:30:00',
+        end: '2022-04-12T12:30:00'
+      },
+      {
+        title: 'Lunch',
+        start: '2022-04-12T12:00:00'
+      },
+      {
+        title: 'Meeting',
+        start: '2022-04-12T14:30:00'
+      },
+      {
+        title: 'Birthday Party',
+        start: '2022-04-13T07:00:00'
+      },
+      {
+        title: 'Click for Google',
+        url: 'http://google.com/',
+        start: '2022-04-28'
+      }
+    ]
+  });
+
+  calendar.render();
+});
 </script>

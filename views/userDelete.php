@@ -23,10 +23,15 @@ if(!$user instanceof User){
     exit;
 }
 
-//valida o POST
+
+    //valida o post
 if(isset($_POST['delete'])){
-    $user->deleteUser();
-}
+    try {
+        $user->deleteUser();
+    }catch (\Throwable $th) {
+        header("Location: /views/erro.php");
+    }
+} 
 
 
 include '../includes/header.php';

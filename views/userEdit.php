@@ -22,14 +22,19 @@ if(!$user instanceof User){
     exit;
 }
 
+
 if(isset($_POST['name'],$_POST['email'],$_POST['password'])){
+    try {
     $user->name = $_POST['name'];
     $user->email = $_POST['email'];
     $user->password = password_hash($_POST['password'],PASSWORD_DEFAULT);
     $user->updateUser();
-    header('location: /views/usuarios.php');
-    exit;
+    } catch (\Throwable $th) {
+        header("Location: /views/erro.php");
+    }
 }
+
+
 
 include '../includes/header.php';
 include '../includes/principal.php';

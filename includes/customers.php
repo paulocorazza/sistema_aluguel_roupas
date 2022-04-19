@@ -6,19 +6,18 @@ $results = '';
   $dateFormatted = date('d/m/Y H:i:s',strtotime('-3 hours',strtotime($customer->created_at)));
   $birthdayFormatted = date('d/m/Y',strtotime($customer->birthday)); 
   $results .= '<tr>
-                      <td style="font-size: small; ">'.$customer->id.'</td>
-                      <td style="font-size: small;">'.$customer->name.'</td>
-                      <td style="font-size: small;">'.$customer->surname.'</td>
-                      <td style="font-size: small;">'.$customer->city.'</td>
-                      <td style="font-size: small;">'.$customer->state.'</td>
-                      <td style="font-size: small;">'.$customer->street.'</td>
-                      <td style="font-size: small;">'.$customer->addressNumber.'</td>
-                      <td style="font-size: small;">'.$customer->addressComplement.'</td>
-                      <td style="font-size: small;"> '.$birthdayFormatted.'</td>
-                      <td style="font-size: small;">'.$customer->phoneNumber.'</td>
-                      <td style="font-size: small;">'.$customer->email.'</td>
-                      <td style="font-size: small;"> '.$dateFormatted.'</td>
-                      <td style="font-size: small; ">
+                      <td>'.$customer->id.'</td>
+                      <td>'.$customer->name.'</td>
+                      <td>'.$customer->surname.'</td>
+                      <td>'.$customer->city.'</td>
+                      <td>'.$customer->state.'</td>
+                      <td>'.$customer->phoneNumber.'</td>
+                      <td>'.$customer->email.'</td>
+                      <td> '.$dateFormatted.'</td>
+                      <td>
+                        <a href="/views/customerInfo.php?id='.$customer->id.'">
+                          <button type="button" class="btn btn-info btn-sm">Mais info</button>
+                        </a>
                         <a href="/views/customerEdit.php?id='.$customer->id.'">
                           <button type="button" class="btn btn-warning btn-sm">Editar</button>
                         </a>
@@ -57,18 +56,6 @@ $results = '';
                 </th>
                 <th class="text-center" style="font-size: small; "><i class="fa-solid fa-location-dot"></i>
                     <p></p>Estado
-                </th>
-                <th class="text-center" style="font-size: small; "><i class="fa-solid fa-road"></i>
-                    <p></p>Rua
-                </th>
-                <th class="text-center" style="font-size: small; "><i class="fa-solid fa-arrow-down-1-9"></i>
-                    <p></p>Número
-                </th>
-                <th class="text-center" style="font-size: small; "><i class="fa-solid fa-comment"></i>
-                    <p></p>Complemento
-                </th>
-                <th class="text-center" style="font-size: small; "><i class="fa-solid fa-birthday-cake"></i>
-                    <p></p>Aniversário
                 </th>
                 <th class="text-center" style="font-size: small; "><i class="fa-solid fa-phone"></i></i>
                     <p></p>Telefone

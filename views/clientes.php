@@ -13,22 +13,27 @@ Login::requireLogin();
 
 if(isset($_POST['name'],$_POST['surname'])){
 
-    $customer = new Customer();
-    $customer->name = $_POST['name'];
-    $customer->surname = $_POST['surname'];
-    $customer->state = $_POST['state'];
-    $customer->city = $_POST['city'];
-    $customer->street = $_POST['street'];
-    $customer->addressNumber = $_POST['addressNumber'];
-    $customer->addressComplement = $_POST['addressComplement'];
-    $customer->email = $_POST['email'];
-    $customer->birthday = $_POST['birthday'];
-    $customer->phoneNumber = $_POST['phoneNumber'];
+    try {
+        $customer = new Customer();
+        $customer->name = $_POST['name'];
+        $customer->surname = $_POST['surname'];
+        $customer->state = $_POST['state'];
+        $customer->city = $_POST['city'];
+        $customer->street = $_POST['street'];
+        $customer->addressNumber = $_POST['addressNumber'];
+        $customer->addressComplement = $_POST['addressComplement'];
+        $customer->email = $_POST['email'];
+        $customer->birthday = $_POST['birthday'];
+        $customer->phoneNumber = $_POST['phoneNumber'];
+        $customer->createCustomer();
+        header('Location: /views/clientes.php');
+        exit;
 
-    $customer->createCustomer();
+    } catch (\Throwable $th) {
+        header('Location: /views/erro.php');
+        exit;
+    }
 
-    header('Location: /views/clientes.php');
-    exit;
 
 }
 

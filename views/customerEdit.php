@@ -23,19 +23,24 @@ if(!$customer instanceof Customer){
 }
 
 if(isset($_POST['name'],$_POST['surname'])){
-    $customer->name = $_POST['name'];
-    $customer->surname = $_POST['surname'];
-    $customer->state = $_POST['state'];
-    $customer->city = $_POST['city'];
-    $customer->street = $_POST['street'];
-    $customer->addressNumber = $_POST['addressNumber'];
-    $customer->addressComplement = $_POST['addressComplement'];
-    $customer->email = $_POST['email'];
-    $customer->birthday = $_POST['birthday'];
-    $customer->phoneNumber = $_POST['phoneNumber'];
-    $customer->updateCustomer();
-    // header('location: /views/clientes.php');
-    // exit;
+    try {
+        $customer->name = $_POST['name'];
+        $customer->surname = $_POST['surname'];
+        $customer->state = $_POST['state'];
+        $customer->city = $_POST['city'];
+        $customer->street = $_POST['street'];
+        $customer->addressNumber = $_POST['addressNumber'];
+        $customer->addressComplement = $_POST['addressComplement'];
+        $customer->email = $_POST['email'];
+        $customer->birthday = $_POST['birthday'];
+        $customer->phoneNumber = $_POST['phoneNumber'];
+        $customer->updateCustomer();
+    } catch (\Throwable $th) {
+        header('location: /views/erro.php');
+        exit;
+    }
+   
+   
 }
 
 include '../includes/header.php';

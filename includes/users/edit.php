@@ -20,6 +20,14 @@
                 </div>
 
                 <div class="form-group">
+                <input id="id" type="hidden" value="<?= $user->id ?>">
+                <i class="fa-solid fa-file-signature"></i>
+                    <label>Login:</label>
+                    <input type="text" class="form-control" name="name" disabled value="<?= $user->login ?>">
+                </div>
+
+
+                <div class="form-group">
                 <i class="fa-solid fa-at"></i>
                     <label>Email:</label>
                     <input type="text" class="form-control" name="email" value="<?= $user->email ?>">

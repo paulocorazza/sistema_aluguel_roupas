@@ -8,6 +8,7 @@ use PDO;
 class User 
 {
     public $id;//user id
+    public $login; //user login
     public $name;//user name
     public $email;//user email
     public $password;//user password
@@ -20,6 +21,7 @@ class User
         $db = new Database('users');
         $this->userId = $db->insert([
             'name' => $this->name,
+            'login' => $this->login,
             'email' => $this->email,
             'password' => $this->password,
             'date' => $this->date = date('Y-m-d H:i:s')
@@ -32,6 +34,7 @@ class User
     {
         return (new Database('users'))->update('id = '.$this->id,[
             'name' => $this->name,
+            'login' => $this->login,
             'email' => $this->email,
             'password' => $this->password,
         ]);

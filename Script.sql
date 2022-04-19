@@ -1,13 +1,25 @@
 use loja
 
-TRUNCATE table users
+create table users(
+	id int not null primary key auto_increment,
+	name varchar(50),
+	login varchar(50),
+	email  varchar(255),
+	password varchar(255)
 
+)
+
+TRUNCATE table users
+	
 select * from users
 
+
+drop table users 
+
 insert into users (
-name,email,password)
+name,login,email,password)
 values 
-('paulo corazza','corazza.pausdlovinicius@fgmail.com','$2y$10$puzo.OACMoGS1ephOM7k7uYS8TttD2txLKMMIPFoQGbBjuoh5pEly')
+('paulo corazza','paulocorazza','corazza.paulovinicius@gmail.com','$2y$10$55kZnftyCUWNRDnOfgmSFOg.fS3eI2UzfEwZXO7aI7H0GOnDPMC.q')
 
 alter table users drop column date
 
@@ -48,6 +60,7 @@ values
 '1992-09-23')
 
 describe customers 
+select * from customers c 
 
 update customers set name = 'John' where city = 'Cabreúva'
 
@@ -63,22 +76,6 @@ create table clothes(
 	type varchar(25)
 )
 
-
-
-
-CREATE TABLE IF NOT EXISTS `form_data` (
-  `id` int(11) NOT NULL auto_increment  primary key ,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `file_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-drop table form_data 
-
-SELECT * from form_data 
-
-
-
 select * from clothes 
 
 delete from clothes where type = 'dress'
@@ -89,3 +86,34 @@ truncate table clothes
 insert into clothes(code,photo,status,buyPrice,rentPrice,salePrice,size,type)
 values 
 ('1','1.png','disponível',300.00,200.00,100.00,42,'dress')
+
+
+
+create table leases(
+	id int not null primary key auto_increment,
+	customerId int,
+	tryDate datetime,
+	takeDate datetime,
+	returnDate date,
+	foreign key (customerId) references customers(id)	
+
+)
+
+select * from leases
+
+insert into leases
+(customerId,tryDate,takeDate,returnDate)
+values 
+(29,'2022-04-18 12:00:00','2022-04-18 12:00:00','2022-04-18 12:00:00')
+
+
+select name as name,  tryDate as tryDate, takeDate l, returnDate l from customers c , leases l WHERE 
+l.customerId  = c.id 
+
+
+
+
+
+
+
+

@@ -25,9 +25,12 @@ if(!$dress instanceof Clothe){
 
 //valida o POST
 if(isset($_POST['delete'])){
-    $dress->deleteDress();
-    header('location: /views/vestidos.php');
-    exit;
+    try {
+        $dress->deleteDress();
+    } catch (\Throwable $th) {
+        header('location: /views/erro.php');
+        exit;
+    }
 }
 
 

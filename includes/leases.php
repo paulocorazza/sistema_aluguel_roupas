@@ -1,7 +1,7 @@
 <?php
 
 $resultados = '';
-  foreach($users as $user){
+  foreach($leases as $lease){
   $dateFormatted = date('d/m/Y H:i:s',strtotime('-3 hours',strtotime($user->date)));
   $resultados .= '<tr>
                       <td>'.$user->id.'</td>
