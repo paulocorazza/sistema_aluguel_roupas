@@ -1,19 +1,17 @@
 <?php
-
 $resultados = '';
   foreach($leases as $lease){
-  $dateFormatted = date('d/m/Y H:i:s',strtotime('-3 hours',strtotime($user->date)));
   $resultados .= '<tr>
-                      <td>'.$user->id.'</td>
-                      <td>'.$user->name.'</td>
-                      <td>'.$user->login .'</td>
-                      <td>'.$user->email.'</td>
-                      <td>'.$dateFormatted .'</td>
+                      <td>'.$lease->id.'</td>
+                      <td>'.$lease->customerId.'</td>
+                      <td>'.$lease->tryDate .'</td>
+                      <td>'.$lease->takeDate.'</td>
+                      <td>'.$lease->returnDate .'</td>
                       <td>
-                        <a href="/views/userEdit.php?id='.$user->id.'">
+                        <a href="/views/leaseEdit.php?id='.$lease->id.'">
                           <button type="button" class="btn btn-warning">Editar</button>
                         </a>
-                        <a href="/views/userDelete.php?id='.$user->id.'">
+                        <a href="/views/leaseDelete.php?id='.$lease->id.'">
                           <button type="button" class="btn btn-danger">Excluir</button>
                         </a>
                       </td>
@@ -23,22 +21,22 @@ $resultados = '';
 ?>
 
 <div class="p-5 bg-light mt-4">
-  <h1 class="text-center">Usuários</h1>
+  <h1 class="text-center">Locações</h1>
 </div>
 
 <div class="container">
 <div class="mt-3">
-  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newUser">Novo Usuario</button>
+  <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newlease">Nova Locação</button>
 </div>
 
 <table class="table bg-light mt-4 table-striped">
   <thead class="bg-primary text-light">
     <tr>
       <th><i class="fa-solid fa-id-card"></i> ID</th>
-      <th><i class="fa-solid fa-file-signature"></i> Nome</th>
-      <th><i class="fa-solid fa-file-signature"></i> Login</th>
-      <th><i class="fa-solid fa-at"></i> Email</th>
-      <th><i class="fa-solid fa-calendar-days"></i> Criado em </th>
+      <th><i class="fa-solid fa-person"></i> Cliente</th>
+      <th><i class="fa-solid fa-calendar-days"></i> Data de Prova</th>
+      <th><i class="fa-solid fa-calendar-days"></i> Data de Retirada</th>
+      <th><i class="fa-solid fa-calendar-days"></i> Data de retorno</th>
       <th><i class="fa-solid fa-circle-exclamation"></i> Ações</th>
     </tr>
   </thead>
@@ -48,26 +46,27 @@ $resultados = '';
 </table>
 
 <!-- Modal -->
-<div class="modal fade" id="newUser" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+<div class="modal fade" id="newlease" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header bg-primary">
-        <h5 class="modal-title text-white">Criar novo usuario</h5>
+        <h5 class="modal-title text-white">Criar nova Locaçāo</h5>
       </div>
-      <form method="POST" id="user-form">
+      <form method="POST" id="lease-form">
         <div class="modal-body">
-          <i class="fa-solid fa-file-signature"></i>
-          <label for="name">Nome:</label>
-          <input type="text" name="name" class="form-control" required>
-          <i class="fa-solid fa-file-signature"></i>
-          <label for="name">Login:</label>
-          <input type="text" name="login" class="form-control" required>
-          <i class="fa-solid fa-at"></i>
-          <label for="email">email:</label>
-          <input type="text" name="email" class="form-control" required>
-          <i class="fa-solid fa-key"></i>
-          <label for="name">Senha:</label>
-          <input type="password" name="password" class="form-control" required>
+         <label for="customer">Cliente:</label>
+         <select class="form-control" name="customerId">
+           <option selected >Selecione um Cliente...</option>
+           <?php foreach($customers as $customer) {?>
+           <?php  echo '<option value="'.$customer->id.'">'.$customer->name.'</option>' ?>
+           <?php } ?>
+         </select>
+         <label for="tryDate">Data de prova</label>
+         <input type="date" class="form-control" name="tryDate">
+         <label for="tryDate">Data de Retirada</label>
+         <input type="date" class="form-control" name="takeDate">
+         <label for="tryDate">Data de Retorno</label>
+         <input type="date" class="form-control" name="returnDate">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cancelar</button>
@@ -79,7 +78,7 @@ $resultados = '';
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="/assets/js/users/user.js"></script>
+<script src="/assets/js/leases/lease.js"></script>
 
 
 

@@ -7,7 +7,7 @@ use App\Entity\Customer;
 use App\Session\Login;
 
 $leases = Lease::getLeases();
-$customer = Customer::getCustomer($_GET['id']);
+$customers = Customer::getCustomers();
 
 //force user to be logged
 Login::requireLogin();
