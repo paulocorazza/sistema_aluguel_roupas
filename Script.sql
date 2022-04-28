@@ -65,7 +65,7 @@ select * from customers c
 update customers set name = 'John' where city = 'Cabreúva'
 
 create table clothes(
-	id int not null auto_increment primary key,
+	id int not null primary key auto_increment,
 	code varchar(10),
 	photo varchar(255),
 	status varchar(25),
@@ -76,11 +76,13 @@ create table clothes(
 	type varchar(25)
 )
 
-select * from clothes 
+	select * from clothes 
 
 delete from clothes where type = 'dress'
 
 truncate table clothes 
+
+drop table clothes 
 
 
 insert into clothes(code,photo,status,buyPrice,rentPrice,salePrice,size,type)
@@ -113,7 +115,31 @@ l.customerId  = c.id
 
 
 
+create table lease_items(
+	id int not null primary key auto_increment,
+	lease_id int,
+	clothe_id int,
+	clothe_code varchar(10),
+	comments varchar(50),
+	status varchar(25),
+	buyPrice decimal(6,2),
+	rentPrice decimal(6,2),
+	salePrice decimal(6,2)
+	
+	
+)
+		
+		select * from lease_items 
+
+alter table clothes add primary key (code)
+
+    alter table lease_items add foreign key (lease_id)  references leases(id)
+	alter table lease_items add foreign key (clothe_id) references clothes(id)
+	
+	alter table lease_items add foreign key (clothe_code) references clothes(code),
+	alter table lease_items add foreign key foreign key (status) references clothes(status)
 
 
+drop table  lease_items 
 
 

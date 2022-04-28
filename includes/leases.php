@@ -1,18 +1,23 @@
 <?php
+
+use App\Entity\Customer;
+
 $resultados = '';
-  foreach($leases as $lease){
+  foreach($leases as $lease ){ 
+  $id = $lease->customerId;
+  $customer = Customer::getCustomer($id);
   $resultados .= '<tr>
                       <td>'.$lease->id.'</td>
-                      <td>'.$lease->customerId.'</td>
+                      <td>'.$customer->name.'</td>
                       <td>'.$lease->tryDate .'</td>
                       <td>'.$lease->takeDate.'</td>
                       <td>'.$lease->returnDate .'</td>
                       <td>
                         <a href="/views/leaseEdit.php?id='.$lease->id.'">
-                          <button type="button" class="btn btn-warning">Editar</button>
+                          <button type="button" class="btn btn-warning btn-sm">Editar/Adicionar Items</button>
                         </a>
                         <a href="/views/leaseDelete.php?id='.$lease->id.'">
-                          <button type="button" class="btn btn-danger">Excluir</button>
+                          <button type="button" class="btn btn-danger btn-sm">Excluir</button>
                         </a>
                       </td>
                   </tr>';
@@ -62,9 +67,9 @@ $resultados = '';
            <?php } ?>
          </select>
          <label for="tryDate">Data de prova</label>
-         <input type="date" class="form-control" name="tryDate">
+         <input type="datetime-local" class="form-control" name="tryDate">
          <label for="tryDate">Data de Retirada</label>
-         <input type="date" class="form-control" name="takeDate">
+         <input type="datetime-local" class="form-control" name="takeDate">
          <label for="tryDate">Data de Retorno</label>
          <input type="date" class="form-control" name="returnDate">
         </div>

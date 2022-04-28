@@ -31,4 +31,25 @@ class Lease
                                       ->fetchAll(PDO::FETCH_CLASS,self::class);
     }
 
+    public static function getLease($userId)
+    {
+        return (new Database('leases'))->select('id ='. $userId)
+                                      ->fetchObject(self::class);
+    }
+
+    public function updateLease()
+    {
+        return (new Database('leases'))->update('id = '.$this->id,[
+            'customerId' => $this->customerId,
+            'tryDate' => $this->tryDate,
+            'takeDate' => $this->takeDate,
+            'returnDate' => $this->returnDate
+        ]);
+    }
+
+    public function deleteLease()
+    {
+        return (new Database('leases'))->delete('id ='.$this->id);
+    }
+
 }
