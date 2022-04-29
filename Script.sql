@@ -128,8 +128,12 @@ create table lease_items(
 	
 	
 )
+
+alter table lease_items drop column salePrice
 		
-		select * from lease_items 
+		select * from lease_items where lease_id =4
+		
+		describe lease_items e
 
 alter table clothes add primary key (code)
 
@@ -139,7 +143,5 @@ alter table clothes add primary key (code)
 	alter table lease_items add foreign key (clothe_code) references clothes(code),
 	alter table lease_items add foreign key foreign key (status) references clothes(status)
 
-
-drop table  lease_items 
-
+SELECT lease_id,clothe_code,comments,rentPrice FROM lease_items WHERE lease_id = 
 

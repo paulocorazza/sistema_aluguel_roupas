@@ -22,6 +22,7 @@ $lease = Lease::getLease($_GET['id']);
 $customers = Customer::getCustomers();
 $clothes = Clothe::getDresses();
 $leaseItems = LeaseItem::getLeaseItemsDress();
+$leaseItemsTotal = LeaseItem::getLeaseItemsTotal();
 
 
 

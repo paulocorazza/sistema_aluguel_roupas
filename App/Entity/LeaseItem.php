@@ -61,5 +61,21 @@ class LeaseItem
 
         }
     }
+    public static function getLeaseItemsTotal()
+    {
+        try {  
+            $pdo = new PDO('mysql:host='.Database::HOST.';dbname='.Database::NAME,Database::USER,Database::PASSWORD);
+            $id = $_GET['id'];
+            $sql = 'SELECT sum(rentPrice) FROM lease_items WHERE lease_id = '.$id;
+            $stmt = $pdo->query($sql);
+            $leaseItemsTotal = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $leaseItemsTotal;
+        } catch (\PDOException $e) {
+            echo 'Erro: ' . $e->getMessage();
+            header("Location: /views/erro.php");
+            exit;
+
+        }
+    }
 
 }

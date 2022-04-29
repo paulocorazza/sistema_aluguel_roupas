@@ -85,8 +85,39 @@
   </div>
 </div>
 
-<?php foreach($leaseItems as $leaseItem) { ?>
-<?php echo '<p>'.$leaseItem['comments'].'</p>' ?>
+<div>
+  <hr>
+</div>
+
+<h1 class="text-center">Items da locação</h1>
+<table class="table bg-light mt-4 table-striped">
+  <thead class="bg-primary text-light">
+    <tr>
+      <th><i class="fa-solid fa-id-card"></i> Locação</th>
+      <th><i class="fa-solid fa-file-signature"></i> Código</th>
+      <th><i class="fa-solid fa-file-signature"></i> Observações</th>
+      <th><i class="fa-solid fa-money-bill"></i> Preço</th>
+      <th><i class="fa-solid fa-circle-exclamation"></i> Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php foreach($leaseItems as $leaseItem) { ?>
+  <?php echo '<tr><td>'.$leaseItem['lease_id'].'</td>' ?>
+  <?php echo '<td>'.$leaseItem['clothe_code'].'</td>' ?>
+  <?php echo '<td>'.$leaseItem['comments'].'</td>' ?>
+  <?php echo '<td>'.$leaseItem['rentPrice'].'</td>' ?>
+  <?php echo '<td>
+                <a href="/views/leaseItems.php?id='.$leaseItem['lease_id'].'" class="btn btn-danger">Excluir</a>
+                <a href="#" class="btn btn-warning">Editar</a>
+              </td>' ?>
+  <?php echo '</tr>' ?>
+  <?php } ?>
+  </tbody>
+</table>
+<?php if($leaseItemsTotal[0]['sum(rentPrice)'] != 0) { ?>
+<p class="text-center">Valor Total = <strong>R$ <?= $leaseItemsTotal[0]['sum(rentPrice)'] ?></strong></p>
+<?php } else {?>
+<?php echo '<p>Sem items de locação!</p>' ?>
 <?php } ?>
 
 
