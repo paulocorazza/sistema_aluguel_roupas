@@ -70,6 +70,7 @@ class Login
             exit;
         } else {
             header("Location: /index.php");
+            exit;
         }
     }
 }
