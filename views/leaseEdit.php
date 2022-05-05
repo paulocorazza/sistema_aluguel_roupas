@@ -26,6 +26,9 @@ $leaseItemsTotal = LeaseItem::getLeaseItemsTotal();
 
 
 
+
+
+
 if(!$lease instanceof Lease){
     header('location: /views/locacoes.php');
     exit;
@@ -45,16 +48,17 @@ if(isset($_POST['customerId'])){
 }
 
 if(isset($_POST['lease_id'])){
+
     $leaseItem = new LeaseItem();
     $leaseItem->leaseId = $_POST['lease_id'];
     $leaseItem->clotheCode = $_POST['clothe_code'];
-    $leaseItem->clotheId = $_POST['clothe_id'];
+    $leaseItem->clotheId = $_POST['id'];
     $leaseItem->comments = $_POST['comments'];
     $leaseItem->rentPrice = $_POST['rentPrice'];
     $leaseItem->saveLeaseItem();
     $leaseItem->updateClotheStatus();
-    header("Location: /views/leaseEdit.php?id=".$_GET['id']);
-    exit;
+    // header("Location: /views/leaseEdit.php?id=".$_GET['id']);
+    // exit;
 }
 
 

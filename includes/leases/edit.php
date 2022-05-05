@@ -40,7 +40,7 @@
       <div class="modal-header bg-primary">
         <h5 id="lease-item" class="modal-title text-white"></h5>
       </div>
-      <form method="POST" id="lease-form">
+      <form method="POST" id="lease_item_form">
         <div class="modal-body">
           <div class="form-group">
               <dl class="text-center">
@@ -53,9 +53,9 @@
                           Código
                         </span>
                         <p><?= $clothe->code ?></p>
-                        <p class="rent" id="<?= $clothe->rentPrice ?>" >R$<?= $clothe->rentPrice ?></p> 
+                        <p>R$<?= $clothe->rentPrice ?></p> 
                         <figure>
-                          <img class="photo" id="<?= $clothe->id ?>" src="/assets/img/<?= $clothe->photo ?>" onclick="setClotheCode(this);" style="height: 100px"; width:150px;">
+                          <img class="<?= $clothe->rentPrice ?>" id="<?= $clothe->code ?>" name="<?= $clothe->id ?>" src="/assets/img/<?= $clothe->photo ?>" onclick="setClotheCode(this);" style="height: 100px"; width:150px;">
                         </figure>
                       </li>
                       <hr>
@@ -63,13 +63,13 @@
                     </ul>
                 </dd>
             </dl>
-          </div>
+          </div>  
           <div class="form-group">
-            <input type="hidden" name="lease_id"  value=""  id="lease">
+            <input type="hidden" name="lease_id"  value="" id="lease_id">
             <input type="hidden" name="clothe_id" value="" id="clothe_id">
-            <input type="hidden" name="rentPrice" value="" id="rent">
+            <input type="hidden" name="rentPrice" value="" id="rentPrice">
             <label for="code">Digite o código do vestido abaixo:</label>
-            <input type="text" value="" id="dressCode" name="clothe_code" class="form-control">
+            <input type="text" value="" id="dress_code" name="clothe_code" class="form-control">
           </div>
           <div class="form-group">
              <label for="observacao">observação</label>
@@ -102,13 +102,13 @@
   </thead>
   <tbody>
   <?php foreach($leaseItems as $leaseItem) { ?>
+  <?php echo '<input type="hidden" value="'.$leaseItem['id'].'" >' ?>
   <?php echo '<tr><td>'.$leaseItem['lease_id'].'</td>' ?>
   <?php echo '<td>'.$leaseItem['clothe_code'].'</td>' ?>
   <?php echo '<td>'.$leaseItem['comments'].'</td>' ?>
   <?php echo '<td>'.$leaseItem['rentPrice'].'</td>' ?>
   <?php echo '<td>
-                <a href="/views/leaseItems.php?id='.$leaseItem['lease_id'].'" class="btn btn-danger">Excluir</a>
-                <a href="#" class="btn btn-warning">Editar</a>
+                <a href="/views/leaseItemsDelete.php?id='.$leaseItem['id'].'" class="btn btn-danger">Excluir</a>
               </td>' ?>
   <?php echo '</tr>' ?>
   <?php } ?>
@@ -125,5 +125,6 @@
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="/assets/js/leases/edit.js"></script>
+
 
 

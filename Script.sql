@@ -129,10 +129,18 @@ create table lease_items(
 	
 )
 
+SELECT clothe_code FROM lease_items WHERE id = 5 AND clothe_id = 1
+
+SELECT id,rentPrice FROM clothes WHERE code = 2
+
 alter table lease_items drop column salePrice
 		
-		select * from lease_items where lease_id =4
+		select * from lease_items where lease_id =2
+		select clothe_code from lease_items li where id = 5
+		select * from clothes c 
 		
+		
+		select sum(rentPrice) from lease_items where lease_id = 2
 		describe lease_items e
 
 alter table clothes add primary key (code)
@@ -144,4 +152,6 @@ alter table clothes add primary key (code)
 	alter table lease_items add foreign key foreign key (status) references clothes(status)
 
 SELECT lease_id,clothe_code,comments,rentPrice FROM lease_items WHERE lease_id = 
+
+delete from lease_items 
 
