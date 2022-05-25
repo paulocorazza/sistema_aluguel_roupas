@@ -48,11 +48,12 @@ if(isset($_POST['customerId'])){
 }
 
 if(isset($_POST['lease_id'])){
+    unset($_POST['lease_id']);
 
     $leaseItem = new LeaseItem();
     $leaseItem->leaseId = $_POST['lease_id'];
     $leaseItem->clotheCode = $_POST['clothe_code'];
-    $leaseItem->clotheId = $_POST['id'];
+    $leaseItem->clotheId = $_POST['clothe_id'];
     $leaseItem->comments = $_POST['comments'];
     $leaseItem->rentPrice = $_POST['rentPrice'];
     $leaseItem->saveLeaseItem();

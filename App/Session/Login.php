@@ -68,9 +68,6 @@ class Login
         if(self::isLogged()){
             header('location: /views/main.php');
             exit;
-        } else {
-            header("Location: /index.php");
-            exit;
-        }
+        } 
     }
 }

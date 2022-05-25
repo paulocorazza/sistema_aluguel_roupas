@@ -59,27 +59,45 @@ $(document).ready(function () {
   });
  });
 
-function setClotheCode(){
 
-  $(document).on("click",function(event){    
-    
-    let dressCode = document.getElementById("dress_code");
-    dressCode.value = event.target.id;
-    console.log("o código da roupa é: "+dressCode.value);
-   
-    let clothe_id = document.getElementById("clothe_id");
-    clothe_id.value = event.target.name;
-    console.log(clothe_id.value);
 
-    let rentPrice = document.getElementById("rentPrice");
-    rentPrice.value = event.target.className;
-    console.log(rentPrice.value);
 
-  })
 
-  
- 
+
+
+
+function setClotheCode(event) {
+  //aqui consigo o codigo da roupa
+  let codigo = event.id;
+  let dressCode = document.getElementById("dress_code");
+  dressCode.value = codigo;
+  let rentPrice = document.getElementById("rentPrice");
+  let clotheId = document.getElementById("clothe_id");
+
+
+
+        var clothe_code = $('#dress_code').val();
+        $.ajax({
+            type:'POST',
+            url:'/App/utils/getClotheData.php',
+            dataType: "json",
+            data:{clothe_code:clothe_code},
+            success:function(data){
+                if(data.status == 'ok'){
+                    $('#rentPrice').text(data.result.rentPrice);
+                    rentPrice.value = data.result.rentPrice;
+                    console.log(rentPrice.value);
+                    clotheId.value =  data.result.clothe_id;
+                    console.log(dressCode.value);
+                } else {
+                    alert("User not found...");
+                } 
+            }
+        });
+
 }
+
+
 //aqui seto no input o id da locacao
 function setLeaseId(event){
   let id = event.id;
@@ -87,6 +105,8 @@ function setLeaseId(event){
   lease_item.innerHTML = `Adicionar item na locação ${id}`;
   let lease = document.getElementById("lease_id");
   lease.value = id;
-  console.log(lease.value);
+
+  console.log("o id da locação é" + id );
+
 }
 

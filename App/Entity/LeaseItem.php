@@ -137,23 +137,4 @@ class LeaseItem
         }   
     }
 
-    // public static function getClotheId()
-    // {
-    //     try {  
-    //         $pdo = new PDO('mysql:host='.Database::HOST.';dbname='.Database::NAME,Database::USER,Database::PASSWORD);
-    //         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //         $stmt = $pdo->prepare('SELECT id,rentPrice FROM clothes WHERE code = :code');
-    //         $stmt->execute(array(
-    //             ':code' => $_POST['clothe_code']
-    //         ));
-    //         $clotheId = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    //         return $clotheId;
-    //     } catch (\PDOException $e) {
-    //         echo 'Erro: ' . $e->getMessage();
-    //         header("Location: /views/erro.php");
-    //         exit;
-
-    //     }
-    // }
-
 }

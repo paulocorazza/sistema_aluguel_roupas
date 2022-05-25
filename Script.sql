@@ -10,8 +10,10 @@ create table users(
 )
 
 TRUNCATE table users
-	
+		
 select * from users
+
+select id,code,rentPrice,comments  from clothes where code = 1
 
 
 drop table users 
@@ -151,7 +153,8 @@ alter table clothes add primary key (code)
 	alter table lease_items add foreign key (clothe_code) references clothes(code),
 	alter table lease_items add foreign key foreign key (status) references clothes(status)
 
-SELECT lease_id,clothe_code,comments,rentPrice FROM lease_items WHERE lease_id = 
+SELECT *  FROM lease_items WHERE lease_id = 7
 
 delete from lease_items 
 
+alter table lease_items add column  created_at TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()

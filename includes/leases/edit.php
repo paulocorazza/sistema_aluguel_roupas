@@ -44,7 +44,7 @@
         <div class="modal-body">
           <div class="form-group">
               <dl class="text-center">
-                <dt>Por favor, selecione um vestido, clique no desejado e depois em salvar.</dt>
+                <dt>Por favor, selecione um vestido, clique no desejado, caso queire, coloque uma observação e aperte enter.</dt>
                 <dd>
                     <ul style="list-style-type:none;">
                     <?php foreach($clothes as $clothe) { ?>
@@ -55,7 +55,7 @@
                         <p><?= $clothe->code ?></p>
                         <p>R$<?= $clothe->rentPrice ?></p> 
                         <figure>
-                          <img class="<?= $clothe->rentPrice ?>" id="<?= $clothe->code ?>" name="<?= $clothe->id ?>" src="/assets/img/<?= $clothe->photo ?>" onclick="setClotheCode(this);" style="height: 100px"; width:150px;">
+                          <img class="photo" id="<?= $clothe->code ?>" src="/assets/img/<?= $clothe->photo ?>" onclick="setClotheCode(this)" style="height: 100px"; width:150px;">
                         </figure>
                       </li>
                       <hr>
@@ -67,13 +67,16 @@
           <div class="form-group">
             <input type="hidden" name="lease_id"  value="" id="lease_id">
             <input type="hidden" name="clothe_id" value="" id="clothe_id">
-            <input type="hidden" name="rentPrice" value="" id="rentPrice">
             <label for="code">Digite o código do vestido abaixo:</label>
-            <input type="text" value="" id="dress_code" name="clothe_code" class="form-control">
+            <input type="text" value="" id="dress_code" name="clothe_code" class="form-control" disabled>
+          </div>
+          <div class="form-group">
+            <label for="price">Preço de aluguel</label>
+            <input type="number" name="rentPrice" value="" id="rentPrice" class="form-control" disabled>
           </div>
           <div class="form-group">
              <label for="observacao">observação</label>
-             <input type="text" class="form-control" name="comments">
+             <input type="text" id="comments" class="form-control" name="comments">
           </div>
         </div>
         <div class="modal-footer">
