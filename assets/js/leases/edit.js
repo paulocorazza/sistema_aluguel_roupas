@@ -69,32 +69,33 @@ $(document).ready(function () {
 function setClotheCode(event) {
   //aqui consigo o codigo da roupa
   let codigo = event.id;
-  let dressCode = document.getElementById("dress_code");
-  dressCode.value = codigo;
+  let dress_code = document.getElementById("clothe_code");
+  dress_code.value = codigo;
   let rentPrice = document.getElementById("rentPrice");
   let clotheId = document.getElementById("clothe_id");
-
-
-
-        var clothe_code = $('#dress_code').val();
-        $.ajax({
-            type:'POST',
-            url:'/App/utils/getClotheData.php',
-            dataType: "json",
-            data:{clothe_code:clothe_code},
-            success:function(data){
-                if(data.status == 'ok'){
-                    $('#rentPrice').text(data.result.rentPrice);
-                    rentPrice.value = data.result.rentPrice;
-                    console.log(rentPrice.value);
-                    clotheId.value =  data.result.clothe_id;
-                    console.log(dressCode.value);
-                } else {
-                    alert("User not found...");
-                } 
-            }
-        });
-
+  let clothe_code = $('#clothe_code').val();
+ 
+  $.ajax({
+      type:'POST',
+      url:'/App/utils/getClotheData.php',
+      dataType: "json",
+      data:{clothe_code:clothe_code},
+      success:function(data){
+          if(data.status == 'ok'){
+              $('#rentPrice').text(data.result.rentPrice);
+          } else {
+              alert("Roupa não encontrada");
+          } 
+          rentPrice.value = data.result.rentPrice;
+          clotheId.value =  data.result.id;
+          $('#aluguel').text(data.result.rentPrice);
+          $('#codigo_roupa').text(codigo);
+          console.log("o id da roupa é" + data.result.id);
+          console.log("o valor do input é" + clotheId.value);
+          console.log("o valor do input do código é " + dress_code.value);
+      }
+      
+  });
 }
 
 
@@ -102,11 +103,8 @@ function setClotheCode(event) {
 function setLeaseId(event){
   let id = event.id;
   let lease_item = document.getElementById("lease-item");
-  lease_item.innerHTML = `Adicionar item na locação ${id}`;
   let lease = document.getElementById("lease_id");
+  lease_item.innerHTML = `Adicionar item na locação ${id}`;
   lease.value = id;
-
-  console.log("o id da locação é" + id );
-
 }
 

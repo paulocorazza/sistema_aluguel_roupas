@@ -48,8 +48,7 @@ if(isset($_POST['customerId'])){
 }
 
 if(isset($_POST['lease_id'])){
-    unset($_POST['lease_id']);
-
+   
     $leaseItem = new LeaseItem();
     $leaseItem->leaseId = $_POST['lease_id'];
     $leaseItem->clotheCode = $_POST['clothe_code'];

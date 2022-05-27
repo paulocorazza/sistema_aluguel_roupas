@@ -29,4 +29,7 @@ if(!empty($_POST['clothe_code'])){
     }
 
     echo json_encode($data);
+   
+    $_POST['clothe_code'] = null;
+
 }

@@ -67,15 +67,19 @@
           <div class="form-group">
             <input type="hidden" name="lease_id"  value="" id="lease_id">
             <input type="hidden" name="clothe_id" value="" id="clothe_id">
-            <label for="code">Digite o código do vestido abaixo:</label>
-            <input type="text" value="" id="dress_code" name="clothe_code" class="form-control" disabled>
+            <input type="hidden" id="clothe_code" name="clothe_code" value="" id="clothe_code">
+            <input type="hidden" id="rentPrice" name="rentPrice" value="">
+            <label for="code"><i class="fa-solid fa-barcode"></i> Código do vestido abaixo:</label>
+            <p id="codigo_roupa"></p>
+            <!-- <input type="text" value="" id="codigo_roupa" class="form-control" disabled> -->
           </div>
           <div class="form-group">
-            <label for="price">Preço de aluguel</label>
-            <input type="number" name="rentPrice" value="" id="rentPrice" class="form-control" disabled>
+            <label for="price"><i class="fa fa-money"></i> Preço de aluguel:</label>
+            <p id="aluguel"></p>
+            <!-- <input type="number" value="" id="aluguel" class="form-control" disabled> -->
           </div>
           <div class="form-group">
-             <label for="observacao">observação</label>
+             <label for="observacao"><i class="fa-solid fa-comment"></i> Caso queira, digite uma observação:</label>
              <input type="text" id="comments" class="form-control" name="comments">
           </div>
         </div>

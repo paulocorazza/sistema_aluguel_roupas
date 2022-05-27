@@ -153,7 +153,7 @@ alter table clothes add primary key (code)
 	alter table lease_items add foreign key (clothe_code) references clothes(code),
 	alter table lease_items add foreign key foreign key (status) references clothes(status)
 
-SELECT *  FROM lease_items WHERE lease_id = 7
+SELECT *  FROM lease_items WHERE lease_id = 8
 
 delete from lease_items 
 
