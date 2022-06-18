@@ -153,8 +153,9 @@ alter table clothes add primary key (code)
 	alter table lease_items add foreign key (clothe_code) references clothes(code),
 	alter table lease_items add foreign key foreign key (status) references clothes(status)
 
-SELECT *  FROM lease_items WHERE lease_id = 8
+SELECT *  FROM lease_items WHERE lease_id = 2
 
 delete from lease_items 
+truncate table lease_items 
 
 alter table lease_items add column  created_at TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
